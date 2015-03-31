@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html ng-app="sampleApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>dotdotdot based angular directive.</title>
+
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+  <script type="text/javascript" src="js/vendor/angular.js"></script>
+  <script type="text/javascript" language="javascript" src="js/angular.dotdotdot.js"></script>
+  <script type="text/javascript" language="javascript" src="js/sample.js"></script>
+</head>
+<body>
+<div id="wrapper" ng-controller="Controller">
+  <div class="example">
+    <p><strong>Text only:</strong></p>
+
+    <div class="l">
+      <p class="before">before:</p>
+
+      <div class="box before">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+        electronic typesetting, remaining essentially unchanged.
+      </div>
+    </div>
+    <div class="r">
+      <p class="after">after:</p>
+
+      <div dotdotdot class="box after">Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+        took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+        but also the leap into electronic typesetting, remaining essentially unchanged.
+      </div>
+    </div>
+  </div>
+
+  <div class="example">
+    <p><strong>Text with markup:</strong></p>
+
+    <div class="l">
+      <p class="before">before:</p>
+
+      <div class="box before">
+        <p><em>Lorem Ipsum</em> is simply dummy text of the <strong>printing</strong> and <strong>typesetting
+          industry</strong>.</p>
+
+        <p><em>Lorem Ipsum</em> has been the industry's standard dummy text ever since <strong>the 1500s</strong>, when
+          an unknown printer took a <em>galley of type</em> and scrambled it to make a type specimen book.</p>
+
+        <p>It has survived not only <strong>five centuries</strong>, but also the leap into <strong>electronic
+          typesetting</strong>.</p>
+      </div>
+    </div>
+    <div class="r">
+      <p class="after">after:</p>
+
+      <div class="box after" dotdotdot>
+        <p><em>Lorem Ipsum</em> is simply dummy text of the <strong>printing</strong> and <strong>typesetting
+          industry</strong>.</p>
+
+        <p><em>Lorem Ipsum</em> has been the industry's standard dummy text ever since <strong>the 1500s</strong>, when
+          an unknown printer took a <em>galley of type</em> and scrambled it to make a type specimen book.</p>
+
+        <p>It has survived not only <strong>five centuries</strong>, but also the leap into <strong>electronic
+          typesetting</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="example">
+    <p><strong>With an &quot;after&quot;-element:</strong></p>
+
+    <div class="l">
+      <p class="before">before:</p>
+
+      <div class="box before">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+        electronic typesetting, remaining essentially unchanged.
+        <a href="#" class="readmore">Read more &raquo;</a></div>
+    </div>
+    <div class="r">
+      <p class="after">after:</p>
+
+      <div class="box after" dotdotdot="dotAfter">Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem
+        Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+        type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+        into electronic typesetting, remaining essentially unchanged.
+        <a href="#" class="readmore">Read more &raquo;</a></div>
+    </div>
+  </div>
+
+  <div class="example resize">
+    <p><strong>Updating onWindowResize:</strong></p>
+
+    <div class="l">
+      <p class="before">before:</p>
+
+      <div class="box before">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+        electronic typesetting, remaining essentially unchanged.
+      </div>
+    </div>
+    <div class="r">
+      <p class="after">after:</p>
+
+      <div class="box after" dotdotdot="dotWatch">Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem
+        Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+        type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+        into electronic typesetting, remaining essentially unchanged.
+      </div>
+    </div>
+  </div>
+  <div class="example resize">
+    <p><strong>Updating onWindowResize:</strong></p>
+
+    <div class="l">
+      <p class="before">before:</p>
+
+      <div class="box before">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+        electronic typesetting, remaining essentially unchanged.
+      </div>
+    </div>
+    <div class="r">
+      <p class="after">after:</p>
+
+      <div class="box after" dotdotdot="dotWatch"><p><em>Lorem Ipsum</em> is simply dummy text of the
+        <strong>printing</strong> and <strong>typesetting
+          industry</strong>.</p>
+
+        <p><em>Lorem Ipsum</em> has been the industry's standard dummy text ever since <strong>the 1500s</strong>, when
+          an unknown printer took a <em>galley of type</em> and scrambled it to make a type specimen book.</p>
+
+        <p>It has survived not only <strong>five centuries</strong>, but also the leap into <strong>electronic
+          typesetting</strong>.</p>
+
+        <p><em>Lorem Ipsum</em> is simply dummy text of the <strong>printing</strong> and <strong>typesetting
+          industry</strong>.</p>
+
+        <p><em>Lorem Ipsum</em> has been the industry's standard dummy text ever since <strong>the 1500s</strong>, when
+          an unknown printer took a <em>galley of type</em> and scrambled it to make a type specimen book.</p>
+
+        <p>It has survived not only <strong>five centuries</strong>, but also the leap into <strong>electronic
+          typesetting</strong>.</p>
+
+        <p><em>Lorem Ipsum</em> is simply dummy text of the <strong>printing</strong> and <strong>typesetting
+          industry</strong>.</p>
+
+        <p><em>Lorem Ipsum</em> has been the industry's standard dummy text ever since <strong>the 1500s</strong>, when
+          an unknown printer took a <em>galley of type</em> and scrambled it to make a type specimen book.</p>
+
+        <p>It has survived not only <strong>five centuries</strong>, but also the leap into <strong>electronic
+          typesetting</strong>.</p>
+
+        <p><em>Lorem Ipsum</em> is simply dummy text of the <strong>printing</strong> and <strong>typesetting
+          industry</strong>.</p>
+
+        <p><em>Lorem Ipsum</em> has been the industry's standard dummy text ever since <strong>the 1500s</strong>, when
+          an unknown printer took a <em>galley of type</em> and scrambled it to make a type specimen book.</p>
+
+        <p>It has survived not only <strong>five centuries</strong>, but also the leap into <strong>electronic
+          typesetting</strong>.</p>
+
+        <p><em>Lorem Ipsum</em> is simply dummy text of the <strong>printing</strong> and <strong>typesetting
+          industry</strong>.</p>
+
+        <p><em>Lorem Ipsum</em> has been the industry's standard dummy text ever since <strong>the 1500s</strong>, when
+          an unknown printer took a <em>galley of type</em> and scrambled it to make a type specimen book.</p>
+
+        <p>It has survived not only <strong>five centuries</strong>, but also the leap into <strong>electronic
+          typesetting</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="example">
+    <p><strong>Toggle the full story</strong></p>
+
+    <div class="l">
+      <p class="before">before:</p>
+
+      <div class="box before">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+        electronic typesetting, remaining essentially unchanged.
+      </div>
+    </div>
+    <div class="r">
+      <p class="after">after:</p>
+
+      <div class="box after" id="dot5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+        Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+        type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+        into electronic typesetting, remaining essentially unchanged.
+      </div>
+    </div>
+  </div>
+
+  <div class="example">
+    <p><strong>Truncate readable pathnames</strong></p>
+
+    <div class="l">
+      <p class="before">before:</p>
+
+      <div class="box before pathname">
+        <div class="pathname">www.website.com/file.html</div>
+        <div class="pathname">www.website.com/with/a/long/pathname/file.html</div>
+      </div>
+    </div>
+    <div class="r">
+      <p class="after">after:</p>
+
+      <div class="box after pathname" id="dot6">
+        <div class="pathname">www.website.com/file.html</div>
+        <div class="pathname">www.website.com/with/a/long/pathname/file.html</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

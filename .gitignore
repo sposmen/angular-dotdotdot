@@ -1,0 +1,5 @@
+# Ignore ide project folders
+.idea
+node_modules
+# Ignore Mac system files.
+._*

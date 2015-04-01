@@ -1,0 +1,106 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+body, div, p {
+  font-family: Arial, Helvetica, Verdana;
+  color: #333;
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+}
+body {
+  background-color: #f3f3f3;
+}
+a, a:link, a:active, a:visited {
+  color: black;
+  text-decoration: underline;
+}
+a:hover {
+  color: #9E1F63;
+}
+#wrapper {
+  background-color: #fff;
+  width: 600px;
+  padding: 50px 50px 0 50px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 5px #ccc;
+}
+#intro {
+  margin-bottom: 60px;
+  p {
+    font-size: 18px;
+  }
+}
+div.example {
+  padding: 0 0 150px 0;
+  p {
+    margin: 0 0 10px 0;
+  }
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+div{
+  &.l, &.r {
+    width: 275px;
+
+  }
+  &.l{float: left;}
+  &.r{float: right;}
+  &.resize {
+    padding-bottom: 250px;
+    div.box {
+      position: absolute;
+      width: 40%;
+      height: 100px;
+      &.before {
+        right: 50%;
+        margin-right: 10px;
+      }
+      &.after {
+        left: 50%;
+        margin-left: 10px;
+      }
+    }
+  }
+  &.box{
+    border: 1px solid #ccc;
+    height: 160px;
+    padding: 15px 20px 10px 20px;
+    &.opened {
+      height: auto;
+    }
+    .toggle .close, &.opened .toggle .open {
+      display: none;
+    }
+    .toggle .opened, &.opened .toggle .close {
+      display: inline;
+    }
+    &.before {
+      background-color: #ffeeee;
+    }
+    &.after {
+      background-color: #eeffee;
+    }
+    &.pathname {
+      height: auto;
+    }
+  }
+}
+
+p{
+  &.before {
+    color: #990000;
+  }
+  &.after {
+    color: #006600;
+  }
+}
+
+.pathname {
+  height: 25px;
+}

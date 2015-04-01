@@ -143,11 +143,9 @@
       var $scope, dot, updater;
       if (this.dot.opts.watch === 'window') {
         dot = angular.element(this.dot);
-        this.$scope.$watch(this.getWindowDimensions, (function(_this) {
-          return function() {
-            return dot.triggerHandler('update.dot');
-          };
-        })(this), true);
+        this.$scope.$watch(this.getWindowDimensions, function() {
+          return dot.triggerHandler('update.dot');
+        }, true);
         $scope = this.$scope;
         updater = function() {
           return $scope.$apply();
@@ -186,15 +184,13 @@
           return elm;
         };
       })(this);
-      elm.unbind_events = (function(_this) {
-        return function() {
-          elm.unbind('update.dot');
-          elm.unbind('isTruncated.dot');
-          elm.unbind('originalContent.dot');
-          elm.unbind('destroy.dot');
-          return elm;
-        };
-      })(this);
+      elm.unbind_events = function() {
+        elm.unbind('update.dot');
+        elm.unbind('isTruncated.dot');
+        elm.unbind('originalContent.dot');
+        elm.unbind('destroy.dot');
+        return elm;
+      };
       this.dot.watch = this.windowWatcher;
       this.dot.orgContent = elm.contents();
       o = this.$scope.dotOptions || {};
@@ -253,40 +249,38 @@
       isTruncated = false;
       notx = ['a table', 'thead', 'tbody', 'tfoot', 'tr', 'col', 'colgroup', 'object', 'embed', 'param', 'ol', 'ul', 'dl', 'blockquote', 'select', 'optgroup', 'option', 'textarea', 'script', 'style'];
       noty = ['script', '.dotdotdot-keep'];
-      angular.forEach($elem.contents().remove(), (function(_this) {
-        return function(e) {
-          var $e;
-          $e = angular.element(e);
-          if (typeof e === 'undefined' || e.nodeType === 3 && e.data.trim().length === 0) {
-            return true;
-          } else if (responseTo($e, noty)) {
-            return $elem.append($e);
-          } else if (isTruncated) {
-            return true;
-          } else {
-            $elem.append($e);
-            if (after && e.nodeType === 1) {
-              $elem[responseTo($elem, notx) ? 'after' : 'append'](after);
-            }
-            if (test($i, o)) {
-              if (e.nodeType === 3) {
-                isTruncated = ellipsisElement($e, $d, $i, o, after);
-              } else {
-                isTruncated = ellipsis($e, $d, $i, o, after);
-              }
-              if (!isTruncated) {
-                $e.remove();
-                isTruncated = true;
-              }
+      angular.forEach($elem.contents().remove(), function(e) {
+        var $e;
+        $e = angular.element(e);
+        if (typeof e === 'undefined' || e.nodeType === 3 && e.data.trim().length === 0) {
+          return true;
+        } else if (responseTo($e, noty)) {
+          return $elem.append($e);
+        } else if (isTruncated) {
+          return true;
+        } else {
+          $elem.append($e);
+          if (after && e.nodeType === 1) {
+            $elem[responseTo($elem, notx) ? 'after' : 'append'](after);
+          }
+          if (test($i, o)) {
+            if (e.nodeType === 3) {
+              isTruncated = ellipsisElement($e, $d, $i, o, after);
+            } else {
+              isTruncated = ellipsis($e, $d, $i, o, after);
             }
             if (!isTruncated) {
-              if (after) {
-                return after.remove();
-              }
+              $e.remove();
+              isTruncated = true;
             }
           }
-        };
-      })(this));
+          if (!isTruncated) {
+            if (after) {
+              return after.remove();
+            }
+          }
+        }
+      });
       return isTruncated;
     };
 

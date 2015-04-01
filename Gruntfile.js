@@ -20,6 +20,23 @@ module.exports = function (grunt) {
         }
       }
     },
+    less: {
+      development: {
+        options: {
+          paths: ["assets/css"]
+        },
+        files: {
+          "css/styles.css": "css/styles.less"
+        }
+      }
+    },
+    cssmin: {
+      development: {
+        files: {
+          'css/styles.min.css': ['css/styles.css']
+        }
+      }
+    },
     uglify: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd h:M:stt") %> */\n'
@@ -48,11 +65,14 @@ module.exports = function (grunt) {
         files: ['src/**/*.coffee'],
         tasks: 'coffeegen'
       },
+      cssmin: {
+        files: ['css/styles.less'],
+        tasks: 'cssgen'
+      },
       js: {
         files: ['Gruntfile.js', 'js/angular.dotdotdot.js'],
         tasks: 'uglify'
       },
-
       html: {
         files: ['index.html', 'angular.html']
       }
@@ -62,9 +82,16 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-coffeelint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.registerTask('coffeegen', ['coffeelint', 'coffee']);
-  grunt.registerTask('build', ['coffeegen', 'uglify']);
-  grunt.registerTask('serve', ['connect', 'watch']);
+
+  // Code generators
+  grunt.registerTask('coffeegen', ['coffeelint', 'coffee', 'uglify']);
+  grunt.registerTask('cssgen', ['less', 'cssmin']);
+
+  // Final Generators
+  grunt.registerTask('build', ['coffeegen', 'cssgen']);
+  grunt.registerTask('serve', ['build', 'connect', 'watch']);
 };
